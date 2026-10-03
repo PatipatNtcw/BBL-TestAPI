@@ -1,6 +1,7 @@
 package com.bbl.testApi.service;
 
 import com.bbl.testApi.exception.BadRequestException;
+import com.bbl.testApi.exception.DataNotFoundException;
 import com.bbl.testApi.model.UserModel;
 import com.bbl.testApi.service.facade.UserServiceImpl;
 import jakarta.annotation.Resource;
@@ -24,7 +25,7 @@ public class UserService implements UserServiceImpl {
     public List<UserModel> getUsersById(Long id) {
         List<UserModel> res = users.stream().filter(user -> user.getId().equals(id)).collect(Collectors.toList());
         if (res.isEmpty()) {
-            throw new BadRequestException("User not found");
+            throw new DataNotFoundException("Data Not Found");
         }
         return res;
     }
@@ -63,7 +64,7 @@ public class UserService implements UserServiceImpl {
                 user.setWebsite(user.getWebsite());
             });
         }else{
-            throw new BadRequestException("404 Not Found");
+            throw new DataNotFoundException("Data Not Found");
         }
         return requestUser;
     }
