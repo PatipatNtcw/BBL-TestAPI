@@ -60,8 +60,8 @@ public class UserService implements UserServiceImpl {
                 user.setId(id);
                 user.setName(requestUser.getName());
                 user.setEmail(requestUser.getEmail());
-                user.setPhone(user.getPhone());
-                user.setWebsite(user.getWebsite());
+                user.setPhone(requestUser.getPhone());
+                user.setWebsite(requestUser.getWebsite());
             });
         }else{
             throw new DataNotFoundException("Data Not Found");
