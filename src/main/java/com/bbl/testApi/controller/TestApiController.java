@@ -24,7 +24,7 @@ public class TestApiController {
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseBO getUsersById(@RequestParam Long id) {
+    public ResponseBO getUsersById(@PathVariable("id") Long id) {
         return ResponseBO.builder().message(userService.getUsersById(id)).status("200").build();
     }
 
@@ -36,12 +36,12 @@ public class TestApiController {
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseBO updateUsers(@RequestParam Long id, @RequestBody UserModel user) {
+    public ResponseBO updateUsers(@PathVariable("id") Long id, @RequestBody UserModel user) {
         return ResponseBO.builder().message(userService.updateUsers(id , user)).status("200").build();
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseBO deleteUser(@RequestParam Long id) {
+    public ResponseBO deleteUser(@PathVariable("id") Long id) {
         return ResponseBO.builder().message(userService.deleteUser(id)).status("200").build();
     }
 
